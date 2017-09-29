@@ -5,6 +5,9 @@ var routes = require('./routes/index');
 
 app.engine('hbs', exphbs({
     extname: '.hbs',// 模版文件使用的后缀名
+    layoutsDir: 'views/layouts/',//设置布局模版文件的目录为 views 文件夹
+    partialsDir: 'views/partials', // 组件模板位置
+    defaultLayout: 'layout',//设置默认的页面布局模版为 layout.hbs 文件
 }));
 
 app.set('view engine', 'hbs');//设置模板引擎
@@ -13,7 +16,7 @@ app.set('port', process.env.PORT || 3000);//设置端口
 
 app.use(express.static(__dirname + '/public'));
 
-routes(app)
+routes(app);
 
 //定制404页面 
 app.use(function(req, res){
