@@ -10,7 +10,7 @@ app.set('view engine', 'hbs');//设置模板引擎
 
 app.set('port', process.env.PORT || 3000);//设置端口
 
-app.use(express.static(__dirname + '/web'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
      res.render('home');
