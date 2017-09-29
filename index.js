@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var exphbs = require('express3-handlebars');
+var routes = require('./routes/index');
 
 app.engine('hbs', exphbs({
     extname: '.hbs',// 模版文件使用的后缀名
@@ -12,9 +13,7 @@ app.set('port', process.env.PORT || 3000);//设置端口
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function (req, res) {
-     res.render('home');
-});
+routes(app)
 
 //定制404页面 
 app.use(function(req, res){
