@@ -3,6 +3,8 @@ var app = express();
 var exphbs = require('express3-handlebars');
 var routes = require('./routes/index');
 
+app.use(express.static(__dirname + '/public'));
+
 app.engine('hbs', exphbs({
     extname: '.hbs',// 模版文件使用的后缀名
     layoutsDir: 'views/layouts/',//设置布局模版文件的目录为 views 文件夹
@@ -13,8 +15,6 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');//设置模板引擎
 
 app.set('port', process.env.PORT || 3000);//设置端口
-
-app.use(express.static(__dirname + '/public'));
 
 routes(app);
 

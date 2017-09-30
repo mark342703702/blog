@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/:name', function(req, res) {
-  res.send('hello, ' + req.params.name);
+router.get('/login', function(feq, res){
+  res.render('Login', {layout : null});
 });
 
 module.exports = router;
