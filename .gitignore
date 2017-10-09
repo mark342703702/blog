@@ -2,7 +2,7 @@
 node_modules
 
 #配置文件
-config/
+#config/
 
 #日志文件
-*.log
+#*.log
