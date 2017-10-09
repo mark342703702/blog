@@ -2,8 +2,11 @@ var express = require('express');
 var app = express();
 var exphbs = require('express3-handlebars');
 var routes = require('./routes/index');
+var config = require('config');
 var winston = require('winston');
 var expressWinston = require('express-winston');
+var path = require('path');
+var favicon = require('serve-favicon');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -14,9 +17,12 @@ app.engine('hbs', exphbs({
     defaultLayout: 'layout',//设置默认的页面布局模版为 layout.hbs 文件
 }));
 
+//设置网站logo
+app.use(favicon(__dirname + '/public/favicon.ico'));
+
 app.set('view engine', 'hbs');//设置模板引擎
 
-app.set('port', process.env.PORT || 3000);//设置端口
+app.set('port', process.env.PORT || config.port);//设置端口
 
 // 正常请求的日志
 app.use(expressWinston.logger({
@@ -71,5 +77,5 @@ app.use(function(err, req, res, next){
 
 app.listen(app.get('port'), function(){
    console.log('app starts on http://localhost:'+ app.get('port'));
-   console.log(__dirname);
+   //console.log(__dirname);
 });
