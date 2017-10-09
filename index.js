@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var exphbs = require('express3-handlebars');
 var routes = require('./routes/index');
+var winston = require('winston');
+var expressWinston = require('express-winston');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -16,7 +18,37 @@ app.set('view engine', 'hbs');//设置模板引擎
 
 app.set('port', process.env.PORT || 3000);//设置端口
 
+// 正常请求的日志
+app.use(expressWinston.logger({
+  transports: [
+    new (winston.transports.Console)({
+      json: true,
+      colorize: true
+    }),
+    new winston.transports.File({
+      filename: 'logs/success.log'
+    })
+  ]
+}));
+
+//路由
 routes(app);
+
+//记录正常请求日志的中间件要放到 routes(app) 之前
+//记录错误请求日志的中间件要放到 routes(app) 之后
+
+// 错误请求的日志
+app.use(expressWinston.errorLogger({
+  transports: [
+    new winston.transports.Console({
+      json: true,
+      colorize: true
+    }),
+    new winston.transports.File({
+      filename: 'logs/error.log'
+    })
+  ]
+}));
 
 //定制404页面 
 app.use(function(req, res){

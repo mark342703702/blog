@@ -20,7 +20,9 @@
   "dependencies": {
     "config": "^1.26.2",
     "express": "^4.15.4",
-    "express3-handlebars": "^0.5.2"
+    "express-winston": "^2.4.0",
+    "express3-handlebars": "^0.5.2",
+    "winston": "^2.4.0"
   },
   "description": "no",
   "main": "index.js",
