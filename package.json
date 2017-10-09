@@ -18,6 +18,7 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
+    "config": "^1.26.2",
     "express": "^4.15.4",
     "express3-handlebars": "^0.5.2"
   },

@@ -1,7 +1,7 @@
 $(function(){
     var data = {
 	labels : ["January","February","March","April","May","June","July"],
-	datasets : [
+	datasets : [ 
 		{
 			fillColor : "rgba(151,187,205,0.5)",
 			strokeColor : "rgba(151,187,205,1)",
