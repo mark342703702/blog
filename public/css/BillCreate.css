@@ -1,0 +1,48 @@
+.billPanel {
+  z-index: -1;
+  cursor: pointer; }
+  .billPanel .panel {
+    -webkit-box-shadow: 10px 10px 5px #888888;
+            box-shadow: 10px 10px 5px #888888;
+    background-color: rgba(151, 187, 205, 0.2);
+    min-height: 600px;
+    position: relative;
+    padding: 10px 30px; }
+    .billPanel .panel .table th, .billPanel .panel .table tr {
+      text-align: center;
+      font-size: 20px;
+      color: #524f49; }
+    .billPanel .panel .table td {
+      border-top: 1px solid #cf4646; }
+    .billPanel .panel .table th {
+      border-bottom: 2px solid #cf4646;
+      font-family: 800;
+      font-size: 24px; }
+    .billPanel .panel .table td.price {
+      color: #cf4646; }
+    .billPanel .panel .table .order {
+      font-family: 800;
+      font-size: 24px; }
+  .billPanel .totalPanel {
+    border-top: 2px solid #cf4646;
+    margin-top: 100px; }
+    .billPanel .totalPanel .total {
+      float: right;
+      width: 200px;
+      font-size: 28px;
+      color: #cf4646;
+      font-family: 800;
+      margin-top: 20px;
+      text-align: center; }
+
+.billBottom {
+  background-color: rgba(185, 16, 16, 0.2);
+  height: 120px;
+  -webkit-box-shadow: 10px 10px 5px #888888;
+          box-shadow: 10px 10px 5px #888888;
+  padding: 20px 30px;
+  position: relative; }
+  .billBottom .btn-success {
+    position: absolute;
+    width: 200px;
+    right: 40px; }

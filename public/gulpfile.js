@@ -20,7 +20,7 @@ gulp.task('sass', function(){
 //页面自动刷新
 gulp.task('reload', function(){
    livereload.listen();
-   gulp.watch(['../views/**/*.hbs', 'css/**/*.css'], function(event){
+   gulp.watch(['../views/**/*.hbs', 'css/**/*.css', 'js/**/*.js'], function(event){
      livereload.changed(event.path);  
    });
 });

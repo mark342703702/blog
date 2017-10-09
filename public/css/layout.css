@@ -1,7 +1,8 @@
 @charset "UTF-8";
 .content {
   width: 1400px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-top: 20px; }
 
 /* 清除内外边距 */
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,
@@ -122,8 +123,7 @@ html {
   cursor: pointer; }
 
 /*任务五、给不是当前状态的3D舞台的悬浮与聚焦状态设置变形效果*/
-.three-d:not(.active):hover .three-d-box,
-.three-d:not(.active):focus .three-d-box {
+.three-d:not(.active):hover .three-d-box {
   -wekbit-transform: translateZ(-25px) rotateX(90deg);
   -webkit-transform: translateZ(-25px) rotateX(90deg);
           transform: translateZ(-25px) rotateX(90deg);
