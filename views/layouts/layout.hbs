@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/BillCreate.css">
+    <link rel="stylesheet" href="/css/{{page}}.css">
     <script src="/plugin/Chart-1.0.1-beta.4.js"></script>
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="/js/home.js"></script>
-    <script src="/js/BillCreate.js"></script>
   </head>
   <body>
+
     <div class="header">
       
            <div id="nav">
 
-              <ul class="nav-menu clearfix unstyled">
+              <ul class="nav-menu clearfix unstyled animated bounceInDown">
 
                 <li><a href="/home" class="three-d">
                     首页
@@ -103,11 +101,11 @@
 
                 </li>
 
-                <li><a href="#" class="three-d">
+                <li><a href="/user/login" class="three-d">
 
-                  Shop On-line
+                  退出
 
-                  <span class="three-d-box"><span class="front">Shop On-line</span><span class="back">瓜</span></span>
+                  <span class="three-d-box"><span class="front">退出</span><span class="back">退出</span></span>
 
                 </a></li>
 
@@ -119,6 +117,6 @@
     <div class="content">
      {{{body}}}
     </div>
-    
+    <script src="/js/{{page}}.js"></script>
   </body>
 </html>

@@ -1,8 +1,5 @@
-
 .billPanel{
-    z-index: -1;
     cursor: pointer;
-
     .panel{
         box-shadow: 10px 10px 5px #888888;
         background-color: rgba(151,187,205,0.2);
@@ -17,7 +14,6 @@
                     text-align: center;
                     font-size: 20px;
                     color: #524f49;
-                    
                 }
 
                 td{
@@ -73,3 +69,74 @@
         }
 
 }
+
+.animated{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.bounceInRight {
+  animation-name: bounceInRight;
+}
+
+.bounceInLeft {
+  animation-name: bounceInLeft;
+}
+
+
