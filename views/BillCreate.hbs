@@ -10,8 +10,6 @@
                         <th>数量</th>
                         <th>小计</th>
                     </tr>
-                    
-                  
                 </table>
                 
             </div>
@@ -24,13 +22,16 @@
         <div class="panel panel-default billBottom">
                 <form class="form-inline">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="pid" placeholder="编号">
+                        <input type="text" class="form-control input-lg" id="pid" placeholder="编号" data-toggle="popover" 
+                         data-trigger="focus" data-placement="top" data-content="编号不能为空">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="price" placeholder="价格">
+                        <input type="text" class="form-control input-lg" id="price" placeholder="价格" data-toggle="popover" 
+                         data-trigger="focus" data-placement="top" data-content="价格不能为空且为数字">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="amount" placeholder="数量">
+                        <input type="text" class="form-control input-lg" id="amount" placeholder="数量" data-toggle="popover" 
+                         data-trigger="focus" data-placement="top" data-content="数量不能为空且为数字">
                     </div>
                     <div class="form-group">
                         <select class="form-control input-lg select">
@@ -48,4 +49,3 @@
         </div>
     </div>
 </div>
-

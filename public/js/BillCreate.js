@@ -1,6 +1,7 @@
 
 $(function(){
 
+
     $(document).keyup(function(event){
         var x = event.which || event.keyCode;
         if( x == 121){
@@ -26,6 +27,10 @@ $(function(){
         });
         $('.totalPrice').html(totalPrice);
     }
+    
+    $('#pid, #price, #amount').popover({
+        trigger : 'manual'
+    });
 
     //点击按钮添加项目  
     $("#addBill").click(function(event){
@@ -38,19 +43,21 @@ $(function(){
         var count = price * amount;
         
         if(pid == ''){
-            
+            $('#pid').popover('show');
             return;
         }
 
         if(price == '' || !priceReg.test(price)){
-            alert('no price');
+            $('#price').popover('show');
             return;
         }
 
         if(amount == '' || !amountReg.test(amount)){
-            alert('no amount');
+            $('#amount').popover('show');
             return;
         }
+
+        $('#price, #amount, #pid').popover('hide');        
 
         var hbs = `<tr class="item"><td class="order">${index}</td>
                    <td>${pid}</td>
@@ -85,7 +92,4 @@ $(function(){
         });
 
     });
-
-
-
 });
