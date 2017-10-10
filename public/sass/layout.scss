@@ -8,5 +8,10 @@
     color: #cf4646;
     font-weight: bold;
 }
+
+#nav{
+    position: relative;
+    z-index: 999;
+}
 @import 'partials/reset';
 @import 'partials/nav';
