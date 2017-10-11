@@ -1,17 +1,18 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId; 
-var option = {
-  _id: false,  //禁止生成_id主键
-  autoIndex: false // 禁止自动创建索引
+var adminSchema = require('../Schema/admin').adminSchema;
+
+//添加管理员
+adminSchema.statics.addAdmin = function(admin){
+    return this.create(admin, function(err){
+        if(err) return console.log(err);
+        // console.log('success');
+    });    
 }
 
-var adminSchema = new Schema({
-    user_name : String,
-    
-}, option);
 
 
 var Admin = mongoose.model('Admin', adminSchema);
 
-exports.Admin = Admin;
+module.exports = Admin;

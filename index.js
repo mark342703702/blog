@@ -25,17 +25,17 @@ app.set('view engine', 'hbs');//设置模板引擎
 app.set('port', process.env.PORT || config.port);//设置端口
 
 // 正常请求的日志
-app.use(expressWinston.logger({
-  transports: [
-    new (winston.transports.Console)({
-      json: true,
-      colorize: true
-    }),
-    new winston.transports.File({
-      filename: 'logs/success.log'
-    })
-  ]
-}));
+// app.use(expressWinston.logger({
+//   transports: [
+//     new (winston.transports.Console)({
+//       json: true,
+//       colorize: true
+//     }),
+//     new winston.transports.File({
+//       filename: 'logs/success.log'
+//     })
+//   ]
+// }));
 
 //路由
 routes(app);
@@ -44,17 +44,17 @@ routes(app);
 //记录错误请求日志的中间件要放到 routes(app) 之后
 
 // 错误请求的日志
-app.use(expressWinston.errorLogger({
-  transports: [
-    new winston.transports.Console({
-      json: true,
-      colorize: true
-    }),
-    new winston.transports.File({
-      filename: 'logs/error.log'
-    })
-  ]
-}));
+// app.use(expressWinston.errorLogger({
+//   transports: [
+//     new winston.transports.Console({
+//       json: true,
+//       colorize: true
+//     }),
+//     new winston.transports.File({
+//       filename: 'logs/error.log'
+//     })
+//   ]
+// }));
 
 //定制404页面 
 app.use(function(req, res){
