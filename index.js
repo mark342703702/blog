@@ -7,7 +7,7 @@ var winston = require('winston');
 var expressWinston = require('express-winston');
 var path = require('path');
 var favicon = require('serve-favicon');
-
+var db = require('./mongodb/db');
 app.use(express.static(__dirname + '/public'));
 
 app.engine('hbs', exphbs({
