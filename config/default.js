@@ -1,9 +1,9 @@
 module.exports = {
     port : 3000,
     session : {
-        secret: 'myblog',
-        key: 'myblog',
-        maxAge: 2592000000
+        secret: 'markmarkmark',
+        key: 'xiaoshidaimark',
+        maxAge: 43200000 //过期时间
     },
-     mongodb: 'mongodb://localhost:27017/Bill'
+    mongodb: 'mongodb://localhost:27017/Bill'
 }
