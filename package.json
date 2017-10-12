@@ -5,6 +5,7 @@
     "autoprefixer": "^7.1.4",
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.7",
     "grunt-smushit": "^2.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
@@ -13,9 +14,12 @@
     "gulp-livereload": "^3.8.1",
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
+    "handlebars-loader": "^1.6.0",
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "^5.0.1",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.7.1"
   },
   "dependencies": {
     "config": "^1.26.2",

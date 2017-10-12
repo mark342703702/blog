@@ -1,7 +1,4 @@
-/**
- * Particleground demo
- * @author Jonathan Nicol - @mrjnicol
- */
+require('../css/login.css');
 
 $(document).ready(function() {
   $('#particles').particleground({

@@ -1,4 +1,4 @@
-
+require('../css/BillCreate.css');
 $(function(){
 
 

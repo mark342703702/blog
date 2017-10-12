@@ -1,3 +1,4 @@
+require('../css/home.css');
 $(function(){
 	$('#weekChart').after('<canvas id="myChart" width="800" height="400"></canvas>');
     var data = {
