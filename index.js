@@ -45,7 +45,7 @@ app.use(flash());
 
 // 设置模板全局常量
 app.locals.blog = {
-    title: '小时代啦啦啦',
+    title: '小时代啦啦啦公司',
     description: '一站式儿童品牌集合店'
 };
 
