@@ -37,9 +37,9 @@ router.get('/login', function(req, res){
   // productModel.Addproduct({
   //     Pid : '2323',
   //     description : '123',
-  //     sale_price : 12,
+  //     sale_price : 34.5,
   //     stock : 12,
-  //     buyin_price : 12,
+  //     buyin_price :34.5,
   //     category : 'shoes'
   // });
 

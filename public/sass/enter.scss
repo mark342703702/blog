@@ -1,0 +1,121 @@
+.panel{
+    box-shadow: 10px 10px 5px #888888;
+        background-color: rgba(151,187,205,0.2);
+        min-height: 600px;
+        position: relative;
+        padding: 10px 30px;
+        font-size: 18px;
+        font-family: 600;
+
+        .addIcon{
+            background-image: url('/image/add.png');
+            background-size:30px 30px;
+            background-repeat:no-repeat;
+            background-position:center; 
+            height: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+
+            &:hover{
+                animation-duration: 1s;
+                animation-fill-mode: both;
+                animation-name: pulse;
+            }
+        }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.enterShow{
+    padding-top: 50px;
+
+    .col-sm-4{
+        text-align: right;
+    }
+
+    .getInput{
+        text-align:left;
+        color: #cf4646;
+    }
+}
+
+.animated{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.bounceInLeft {
+  animation-name: bounceInLeft;
+}
+
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.bounceInRight {
+  animation-name: bounceInRight;
+}
