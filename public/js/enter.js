@@ -69,8 +69,6 @@ $(function(){
             var $this = $(this);
             var ProductItem = $this.closest('.ProductItem');
             $(ProductItem).after(enterProductTpl);
-            bindAddProductData();
-            bindAddProductItem();
         });
     }
 
