@@ -74,7 +74,11 @@ $(function(){
                 return;
             }
             var $this = $(this);
-            $this.closest('.ProductItem').remove();
+            $this.closest('.ProductItem').addClass('animated bounceOutLeft');
+            setTimeout(function(){
+                $this.closest('.ProductItem').remove();
+            }, 1000)
+            
          });
     }
 

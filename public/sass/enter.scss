@@ -22,7 +22,7 @@
           cursor: pointer;
 
           &:hover{
-            animation-duration: 2s;
+            animation-duration: 1s;
             animation-fill-mode: both;
             animation-name: flash;
           }
@@ -123,6 +123,38 @@
   }
 }
 
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-2000px, 0, 0);
+  }
+}
+
+.bounceOutLeft {
+  animation-name: bounceOutLeft;
+}
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+.bounceOutRight {
+  animation-name: bounceOutRight;
+}
+
 .toolbar{
       
       width: 100px;
@@ -149,7 +181,7 @@
         margin: 30px 30px;
 
         &:hover{
-          animation-duration: 2s;
+          animation-duration: 1s;
           animation-fill-mode: both;
           animation-name: flash;
         }
@@ -169,7 +201,7 @@
         background-color: #cf4646;
 
         &:hover{
-          animation-duration: 2s;
+          animation-duration: 1s;
           animation-fill-mode: both;
           animation-name: flash;
         }

@@ -19,8 +19,8 @@
     width: 40px;
     cursor: pointer; }
     .panel .deleteIcon:hover {
-      -webkit-animation-duration: 2s;
-              animation-duration: 2s;
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
       -webkit-animation-fill-mode: both;
               animation-fill-mode: both;
       -webkit-animation-name: flash;
@@ -148,6 +148,54 @@
   25%, 75% {
     opacity: 0; } }
 
+@-webkit-keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(20px, 0, 0);
+            transform: translate3d(20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+            transform: translate3d(-2000px, 0, 0); } }
+
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(20px, 0, 0);
+            transform: translate3d(20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+            transform: translate3d(-2000px, 0, 0); } }
+
+.bounceOutLeft {
+  -webkit-animation-name: bounceOutLeft;
+          animation-name: bounceOutLeft; }
+
+@-webkit-keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+            transform: translate3d(-20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+            transform: translate3d(2000px, 0, 0); } }
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+            transform: translate3d(-20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+            transform: translate3d(2000px, 0, 0); } }
+
+.bounceOutRight {
+  -webkit-animation-name: bounceOutRight;
+          animation-name: bounceOutRight; }
+
 .toolbar {
   width: 100px;
   position: fixed;
@@ -168,8 +216,8 @@
     border-radius: 6px;
     margin: 30px 30px; }
     .toolbar .addIcon:hover {
-      -webkit-animation-duration: 2s;
-              animation-duration: 2s;
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
       -webkit-animation-fill-mode: both;
               animation-fill-mode: both;
       -webkit-animation-name: flash;
@@ -187,8 +235,8 @@
     margin: 30px 30px;
     background-color: #cf4646; }
     .toolbar .backTopIcon:hover {
-      -webkit-animation-duration: 2s;
-              animation-duration: 2s;
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
       -webkit-animation-fill-mode: both;
               animation-fill-mode: both;
       -webkit-animation-name: flash;
