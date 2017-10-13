@@ -1,5 +1,5 @@
 .panel{
-    box-shadow: 10px 10px 5px #888888;
+        box-shadow: 10px 10px 5px #888888;
         background-color: rgba(151,187,205,0.2);
         min-height: 600px;
         position: relative;
@@ -179,7 +179,7 @@
         cursor: pointer;
         border-radius: 6px;
         margin: 30px 30px;
-
+        box-shadow: 2px 2px 3px #888888;
         &:hover{
           animation-duration: 1s;
           animation-fill-mode: both;
@@ -198,8 +198,28 @@
         cursor: pointer;
         border-radius: 6px;
         margin: 30px 30px;
-        background-color: #cf4646;
+        background-color: #2dd14c;
+        box-shadow: 2px 2px 3px #888888;
+        &:hover{
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          animation-name: flash;
+        }
+  }
 
+  .saveIcon{
+        background-image: url('/image/save.png');
+        background-size:20px 20px;
+        background-repeat:no-repeat;
+        background-position:center;
+        padding: 10px;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: 30px 30px;
+        background-color: #cf4646;
+        box-shadow: 2px 2px 3px #888888;
         &:hover{
           animation-duration: 1s;
           animation-fill-mode: both;

@@ -214,7 +214,9 @@
     width: 40px;
     cursor: pointer;
     border-radius: 6px;
-    margin: 30px 30px; }
+    margin: 30px 30px;
+    -webkit-box-shadow: 2px 2px 3px #888888;
+            box-shadow: 2px 2px 3px #888888; }
     .toolbar .addIcon:hover {
       -webkit-animation-duration: 1s;
               animation-duration: 1s;
@@ -233,8 +235,31 @@
     cursor: pointer;
     border-radius: 6px;
     margin: 30px 30px;
-    background-color: #cf4646; }
+    background-color: #2dd14c;
+    -webkit-box-shadow: 2px 2px 3px #888888;
+            box-shadow: 2px 2px 3px #888888; }
     .toolbar .backTopIcon:hover {
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-name: flash;
+              animation-name: flash; }
+  .toolbar .saveIcon {
+    background-image: url("/image/save.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 30px 30px;
+    background-color: #cf4646;
+    -webkit-box-shadow: 2px 2px 3px #888888;
+            box-shadow: 2px 2px 3px #888888; }
+    .toolbar .saveIcon:hover {
       -webkit-animation-duration: 1s;
               animation-duration: 1s;
       -webkit-animation-fill-mode: both;
