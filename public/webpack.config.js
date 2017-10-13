@@ -2,7 +2,6 @@ var webpack = require('webpack');
 
 module.exports = {
     entry : {
-        login : __dirname + '/js/login.js',
         BillCreate : __dirname + '/js/BillCreate.js',
         home : __dirname + '/js/home.js',
         enter :  __dirname + '/js/enter.js'

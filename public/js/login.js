@@ -1,4 +1,3 @@
-require('../css/login.css');
 
 $(document).ready(function() {
   $('#particles').particleground({
