@@ -7,43 +7,24 @@
   padding: 10px 30px;
   font-size: 18px;
   font-family: 600; }
-  .panel .addIcon {
-    background-image: url("/image/add.png");
+  .panel .enterInput {
+    margin-top: 20px; }
+  .panel .deleteIcon {
+    height: 40px;
+    background-image: url("/image/delete.png");
     background-size: 30px 30px;
     background-repeat: no-repeat;
     background-position: center;
-    height: 30px;
-    cursor: pointer;
-    margin-bottom: 20px; }
-    .panel .addIcon:hover {
-      -webkit-animation-duration: 1s;
-              animation-duration: 1s;
+    padding: 10px;
+    width: 40px;
+    cursor: pointer; }
+    .panel .deleteIcon:hover {
+      -webkit-animation-duration: 2s;
+              animation-duration: 2s;
       -webkit-animation-fill-mode: both;
               animation-fill-mode: both;
-      -webkit-animation-name: pulse;
-              animation-name: pulse; }
-
-@-webkit-keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1); }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-            transform: scale3d(1.05, 1.05, 1.05); }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1); } }
-
-@keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1); }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-            transform: scale3d(1.05, 1.05, 1.05); }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1); } }
+      -webkit-animation-name: flash;
+              animation-name: flash; }
 
 .enterShow {
   padding-top: 50px; }
@@ -154,3 +135,61 @@
 .bounceInRight {
   -webkit-animation-name: bounceInRight;
           animation-name: bounceInRight; }
+
+@-webkit-keyframes flash {
+  from, 50%, to {
+    opacity: 1; }
+  25%, 75% {
+    opacity: 0; } }
+
+@keyframes flash {
+  from, 50%, to {
+    opacity: 1; }
+  25%, 75% {
+    opacity: 0; } }
+
+.toolbar {
+  width: 100px;
+  position: fixed;
+  top: 240px;
+  left: calc( ( 100% - 1400px) / 2 + 1420px); }
+  .toolbar .col-sm-12 {
+    margin-bottom: 20px; }
+  .toolbar .addIcon {
+    background-image: url("/image/add.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #009dcd;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 30px 30px; }
+    .toolbar .addIcon:hover {
+      -webkit-animation-duration: 2s;
+              animation-duration: 2s;
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-name: flash;
+              animation-name: flash; }
+  .toolbar .backTopIcon {
+    background-image: url("/image/backTop.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 30px 30px;
+    background-color: #cf4646; }
+    .toolbar .backTopIcon:hover {
+      -webkit-animation-duration: 2s;
+              animation-duration: 2s;
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-name: flash;
+              animation-name: flash; }
