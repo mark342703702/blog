@@ -207,3 +207,19 @@
         }
   }
 }
+
+.sweet-alert{
+
+  button.confirm:hover{
+      opacity: 0.6;
+  }
+
+  button.cancel{
+    background-color: #cf4646;
+
+    &:hover{
+      opacity: 0.6;
+      background-color: #cf4646;
+    }
+  }
+}

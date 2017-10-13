@@ -941,10 +941,52 @@ exports["default"] = SafeString;
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(18);
-var backTop = __webpack_require__(20);
-var enterProductTpl = __webpack_require__(14);
+__webpack_require__(14);
+var backTop = __webpack_require__(16);
+var enterProductTpl = __webpack_require__(17);
 $(function(){
+
+    var NumRegCheck = function(val){
+        var reg = /^\d+$/g;
+        if(!val || !reg.test(val)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+     $(document).keydown(function(event){
+        var x = event.which || event.keyCode;
+        var data = [];
+        var ProductItem = $('.ProductItem');
+        if( x !== 13){
+            return;
+        }
+
+        ProductItem.each(function(){
+            var $this = $(this);
+            var temp = {};
+            temp.Pid = $this.find('.Pid').val();
+            temp.description = $this.find('.description').val();
+            temp.stock = $this.find('.stock').val();
+            temp.buyin_price = $this.find('.buyin_price').val();
+            temp.category = $this.find('input[name = "category"]:checked').val();
+            data.push(temp);
+        });
+
+        var resCheck = data.every(function(ele){
+            if(!ele.Pid || !ele.description || !NumRegCheck(ele.stock) || !NumRegCheck(ele.buyin_price)){
+                return false;
+            }
+            return true;
+        });
+
+        if(resCheck){
+            alert('数据正常');
+        }else{
+            alert('数据错误');
+        }
+    });
 
     var sale_price_set = function(val){
         if(!val){
@@ -1013,15 +1055,36 @@ $(function(){
         $('.panel .deleteIcon').click(function(e){
             e.stopPropagation();
             var ProductItem = $('.ProductItem');
+            var $this = $(this);
             if($(ProductItem).length == 1){
+                swal({
+                    title : '再删就没了',
+                    confirmButtonText : '好啦,知道啦',
+                    confirmButtonColor : '#cf4646',
+                    type: "warning"
+                });
                 return;
             }
-            var $this = $(this);
-            $this.closest('.ProductItem').addClass('animated bounceOutLeft');
-            setTimeout(function(){
-                $this.closest('.ProductItem').remove();
-            }, 1000)
-            
+            swal({
+                title : '╮(╯_╰)╭ ',
+                text : '你确定要删除该表单吗?',
+                showCancelButton : true,
+                confirmButtonText : '删了它!!!',
+                confirmButtonColor : '#e86363',
+                cancelButtonText : '算了,饶了它'
+            },function(){
+                    $this.closest('.ProductItem').addClass('animated bounceOutLeft');
+                    setTimeout(function(){
+                         $this.closest('.ProductItem').remove();
+                         swal({
+                            title : '删除成功 ╮(￣▽￣)╭!',
+                            type : 'success',
+                            confirmButtonText : '确定',
+                            timer: 1500
+                        });
+                        
+                    }, 1000);
+            });            
          });
     }
 
@@ -1048,7 +1111,78 @@ $(function(){
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(15);
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(15);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!./enter.css", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!./enter.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".panel {\n  -webkit-box-shadow: 10px 10px 5px #888888;\n          box-shadow: 10px 10px 5px #888888;\n  background-color: rgba(151, 187, 205, 0.2);\n  min-height: 600px;\n  position: relative;\n  padding: 10px 30px;\n  font-size: 18px;\n  font-family: 600; }\n  .panel .enterInput {\n    margin-top: 20px; }\n  .panel .deleteIcon {\n    height: 40px;\n    background-image: url(\"/image/delete.png\");\n    background-size: 30px 30px;\n    background-repeat: no-repeat;\n    background-position: center;\n    padding: 10px;\n    width: 40px;\n    cursor: pointer; }\n    .panel .deleteIcon:hover {\n      -webkit-animation-duration: 1s;\n              animation-duration: 1s;\n      -webkit-animation-fill-mode: both;\n              animation-fill-mode: both;\n      -webkit-animation-name: flash;\n              animation-name: flash; }\n\n.enterShow {\n  padding-top: 50px; }\n  .enterShow .col-sm-4 {\n    text-align: right; }\n  .enterShow .getInput {\n    text-align: left;\n    color: #cf4646; }\n\n.animated {\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both; }\n\n@-webkit-keyframes bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(-3000px, 0, 0);\n            transform: translate3d(-3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(25px, 0, 0);\n            transform: translate3d(25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(-10px, 0, 0);\n            transform: translate3d(-10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(5px, 0, 0);\n            transform: translate3d(5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(-3000px, 0, 0);\n            transform: translate3d(-3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(25px, 0, 0);\n            transform: translate3d(25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(-10px, 0, 0);\n            transform: translate3d(-10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(5px, 0, 0);\n            transform: translate3d(5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n.bounceInLeft {\n  -webkit-animation-name: bounceInLeft;\n          animation-name: bounceInLeft; }\n\n@-webkit-keyframes bounceInRight {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(3000px, 0, 0);\n            transform: translate3d(3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(-25px, 0, 0);\n            transform: translate3d(-25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n            transform: translate3d(10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n            transform: translate3d(-5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounceInRight {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(3000px, 0, 0);\n            transform: translate3d(3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(-25px, 0, 0);\n            transform: translate3d(-25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n            transform: translate3d(10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n            transform: translate3d(-5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n.bounceInRight {\n  -webkit-animation-name: bounceInRight;\n          animation-name: bounceInRight; }\n\n@-webkit-keyframes flash {\n  from, 50%, to {\n    opacity: 1; }\n  25%, 75% {\n    opacity: 0; } }\n\n@keyframes flash {\n  from, 50%, to {\n    opacity: 1; }\n  25%, 75% {\n    opacity: 0; } }\n\n@-webkit-keyframes bounceOutLeft {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(20px, 0, 0);\n            transform: translate3d(20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(-2000px, 0, 0);\n            transform: translate3d(-2000px, 0, 0); } }\n\n@keyframes bounceOutLeft {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(20px, 0, 0);\n            transform: translate3d(20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(-2000px, 0, 0);\n            transform: translate3d(-2000px, 0, 0); } }\n\n.bounceOutLeft {\n  -webkit-animation-name: bounceOutLeft;\n          animation-name: bounceOutLeft; }\n\n@-webkit-keyframes bounceOutRight {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(-20px, 0, 0);\n            transform: translate3d(-20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(2000px, 0, 0);\n            transform: translate3d(2000px, 0, 0); } }\n\n@keyframes bounceOutRight {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(-20px, 0, 0);\n            transform: translate3d(-20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(2000px, 0, 0);\n            transform: translate3d(2000px, 0, 0); } }\n\n.bounceOutRight {\n  -webkit-animation-name: bounceOutRight;\n          animation-name: bounceOutRight; }\n\n.toolbar {\n  width: 100px;\n  position: fixed;\n  top: 240px;\n  left: calc( ( 100% - 1400px) / 2 + 1420px); }\n  .toolbar .col-sm-12 {\n    margin-bottom: 20px; }\n  .toolbar .addIcon {\n    background-image: url(\"/image/add.png\");\n    background-size: 20px 20px;\n    background-repeat: no-repeat;\n    background-position: center;\n    background-color: #009dcd;\n    padding: 10px;\n    height: 40px;\n    width: 40px;\n    cursor: pointer;\n    border-radius: 6px;\n    margin: 30px 30px; }\n    .toolbar .addIcon:hover {\n      -webkit-animation-duration: 1s;\n              animation-duration: 1s;\n      -webkit-animation-fill-mode: both;\n              animation-fill-mode: both;\n      -webkit-animation-name: flash;\n              animation-name: flash; }\n  .toolbar .backTopIcon {\n    background-image: url(\"/image/backTop.png\");\n    background-size: 20px 20px;\n    background-repeat: no-repeat;\n    background-position: center;\n    padding: 10px;\n    height: 40px;\n    width: 40px;\n    cursor: pointer;\n    border-radius: 6px;\n    margin: 30px 30px;\n    background-color: #cf4646; }\n    .toolbar .backTopIcon:hover {\n      -webkit-animation-duration: 1s;\n              animation-duration: 1s;\n      -webkit-animation-fill-mode: both;\n              animation-fill-mode: both;\n      -webkit-animation-name: flash;\n              animation-name: flash; }\n\n.sweet-alert button.confirm:hover {\n  opacity: 0.6; }\n\n.sweet-alert button.cancel {\n  background-color: #cf4646; }\n  .sweet-alert button.cancel:hover {\n    opacity: 0.6;\n    background-color: #cf4646; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+exports.toTheTop = function(){
+     var win = $(window);
+     var sc = $(document);
+     $('.toolbar .backTopIcon').fadeOut();
+     $('.toolbar .backTopIcon').on('click', function(){
+        $('body').animate({ scrollTop: 0 }, 800);
+        
+     });
+
+     win.scroll(function(){
+       if(sc.scrollTop() > 400){
+        $('.toolbar .backTopIcon').fadeIn();
+
+       }else {
+        $('.toolbar .backTopIcon').fadeOut();
+       }
+
+     });
+    
+    };
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(18);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
@@ -1060,16 +1194,16 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   });
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(16);
+module.exports = __webpack_require__(19);
 
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1082,7 +1216,7 @@ var base = __webpack_require__(3);
 var SafeString = __webpack_require__(6)["default"];
 var Exception = __webpack_require__(5)["default"];
 var Utils = __webpack_require__(4);
-var runtime = __webpack_require__(17);
+var runtime = __webpack_require__(20);
 
 // For compatibility and usage outside of module systems, make the Handlebars object a namespace
 var create = function() {
@@ -1107,7 +1241,7 @@ Handlebars.create = create;
 exports["default"] = Handlebars;
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1248,77 +1382,6 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(19);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!./enter.css", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!./enter.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".panel {\n  -webkit-box-shadow: 10px 10px 5px #888888;\n          box-shadow: 10px 10px 5px #888888;\n  background-color: rgba(151, 187, 205, 0.2);\n  min-height: 600px;\n  position: relative;\n  padding: 10px 30px;\n  font-size: 18px;\n  font-family: 600; }\n  .panel .enterInput {\n    margin-top: 20px; }\n  .panel .deleteIcon {\n    height: 40px;\n    background-image: url(\"/image/delete.png\");\n    background-size: 30px 30px;\n    background-repeat: no-repeat;\n    background-position: center;\n    padding: 10px;\n    width: 40px;\n    cursor: pointer; }\n    .panel .deleteIcon:hover {\n      -webkit-animation-duration: 1s;\n              animation-duration: 1s;\n      -webkit-animation-fill-mode: both;\n              animation-fill-mode: both;\n      -webkit-animation-name: flash;\n              animation-name: flash; }\n\n.enterShow {\n  padding-top: 50px; }\n  .enterShow .col-sm-4 {\n    text-align: right; }\n  .enterShow .getInput {\n    text-align: left;\n    color: #cf4646; }\n\n.animated {\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both; }\n\n@-webkit-keyframes bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(-3000px, 0, 0);\n            transform: translate3d(-3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(25px, 0, 0);\n            transform: translate3d(25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(-10px, 0, 0);\n            transform: translate3d(-10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(5px, 0, 0);\n            transform: translate3d(5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(-3000px, 0, 0);\n            transform: translate3d(-3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(25px, 0, 0);\n            transform: translate3d(25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(-10px, 0, 0);\n            transform: translate3d(-10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(5px, 0, 0);\n            transform: translate3d(5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n.bounceInLeft {\n  -webkit-animation-name: bounceInLeft;\n          animation-name: bounceInLeft; }\n\n@-webkit-keyframes bounceInRight {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(3000px, 0, 0);\n            transform: translate3d(3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(-25px, 0, 0);\n            transform: translate3d(-25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n            transform: translate3d(10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n            transform: translate3d(-5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n@keyframes bounceInRight {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(3000px, 0, 0);\n            transform: translate3d(3000px, 0, 0); }\n  60% {\n    opacity: 1;\n    -webkit-transform: translate3d(-25px, 0, 0);\n            transform: translate3d(-25px, 0, 0); }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n            transform: translate3d(10px, 0, 0); }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n            transform: translate3d(-5px, 0, 0); }\n  to {\n    -webkit-transform: none;\n            transform: none; } }\n\n.bounceInRight {\n  -webkit-animation-name: bounceInRight;\n          animation-name: bounceInRight; }\n\n@-webkit-keyframes flash {\n  from, 50%, to {\n    opacity: 1; }\n  25%, 75% {\n    opacity: 0; } }\n\n@keyframes flash {\n  from, 50%, to {\n    opacity: 1; }\n  25%, 75% {\n    opacity: 0; } }\n\n@-webkit-keyframes bounceOutLeft {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(20px, 0, 0);\n            transform: translate3d(20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(-2000px, 0, 0);\n            transform: translate3d(-2000px, 0, 0); } }\n\n@keyframes bounceOutLeft {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(20px, 0, 0);\n            transform: translate3d(20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(-2000px, 0, 0);\n            transform: translate3d(-2000px, 0, 0); } }\n\n.bounceOutLeft {\n  -webkit-animation-name: bounceOutLeft;\n          animation-name: bounceOutLeft; }\n\n@-webkit-keyframes bounceOutRight {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(-20px, 0, 0);\n            transform: translate3d(-20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(2000px, 0, 0);\n            transform: translate3d(2000px, 0, 0); } }\n\n@keyframes bounceOutRight {\n  20% {\n    opacity: 1;\n    -webkit-transform: translate3d(-20px, 0, 0);\n            transform: translate3d(-20px, 0, 0); }\n  to {\n    opacity: 0;\n    -webkit-transform: translate3d(2000px, 0, 0);\n            transform: translate3d(2000px, 0, 0); } }\n\n.bounceOutRight {\n  -webkit-animation-name: bounceOutRight;\n          animation-name: bounceOutRight; }\n\n.toolbar {\n  width: 100px;\n  position: fixed;\n  top: 240px;\n  left: calc( ( 100% - 1400px) / 2 + 1420px); }\n  .toolbar .col-sm-12 {\n    margin-bottom: 20px; }\n  .toolbar .addIcon {\n    background-image: url(\"/image/add.png\");\n    background-size: 20px 20px;\n    background-repeat: no-repeat;\n    background-position: center;\n    background-color: #009dcd;\n    padding: 10px;\n    height: 40px;\n    width: 40px;\n    cursor: pointer;\n    border-radius: 6px;\n    margin: 30px 30px; }\n    .toolbar .addIcon:hover {\n      -webkit-animation-duration: 1s;\n              animation-duration: 1s;\n      -webkit-animation-fill-mode: both;\n              animation-fill-mode: both;\n      -webkit-animation-name: flash;\n              animation-name: flash; }\n  .toolbar .backTopIcon {\n    background-image: url(\"/image/backTop.png\");\n    background-size: 20px 20px;\n    background-repeat: no-repeat;\n    background-position: center;\n    padding: 10px;\n    height: 40px;\n    width: 40px;\n    cursor: pointer;\n    border-radius: 6px;\n    margin: 30px 30px;\n    background-color: #cf4646; }\n    .toolbar .backTopIcon:hover {\n      -webkit-animation-duration: 1s;\n              animation-duration: 1s;\n      -webkit-animation-fill-mode: both;\n              animation-fill-mode: both;\n      -webkit-animation-name: flash;\n              animation-name: flash; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports) {
-
-exports.toTheTop = function(){
-     var win = $(window);
-     var sc = $(document);
-     $('.toolbar .backTopIcon').fadeOut();
-     $('.toolbar .backTopIcon').on('click', function(){
-        $('body').animate({ scrollTop: 0 }, 800);
-        
-     });
-
-     win.scroll(function(){
-       if(sc.scrollTop() > 400){
-        $('.toolbar .backTopIcon').fadeIn();
-
-       }else {
-        $('.toolbar .backTopIcon').fadeOut();
-       }
-
-     });
-    
-    };
-
 
 /***/ })
 /******/ ]);

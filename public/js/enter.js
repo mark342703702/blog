@@ -3,6 +3,48 @@ var backTop = require('./partials/backTop');
 var enterProductTpl = require('../hbs/enterProduct.hbs');
 $(function(){
 
+    var NumRegCheck = function(val){
+        var reg = /^\d+$/g;
+        if(!val || !reg.test(val)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+     $(document).keydown(function(event){
+        var x = event.which || event.keyCode;
+        var data = [];
+        var ProductItem = $('.ProductItem');
+        if( x !== 13){
+            return;
+        }
+
+        ProductItem.each(function(){
+            var $this = $(this);
+            var temp = {};
+            temp.Pid = $this.find('.Pid').val();
+            temp.description = $this.find('.description').val();
+            temp.stock = $this.find('.stock').val();
+            temp.buyin_price = $this.find('.buyin_price').val();
+            temp.category = $this.find('input[name = "category"]:checked').val();
+            data.push(temp);
+        });
+
+        var resCheck = data.every(function(ele){
+            if(!ele.Pid || !ele.description || !NumRegCheck(ele.stock) || !NumRegCheck(ele.buyin_price)){
+                return false;
+            }
+            return true;
+        });
+
+        if(resCheck){
+            alert('数据正常');
+        }else{
+            alert('数据错误');
+        }
+    });
+
     var sale_price_set = function(val){
         if(!val){
             return '';
@@ -70,15 +112,36 @@ $(function(){
         $('.panel .deleteIcon').click(function(e){
             e.stopPropagation();
             var ProductItem = $('.ProductItem');
+            var $this = $(this);
             if($(ProductItem).length == 1){
+                swal({
+                    title : '再删就没了',
+                    confirmButtonText : '好啦,知道啦',
+                    confirmButtonColor : '#cf4646',
+                    type: "warning"
+                });
                 return;
             }
-            var $this = $(this);
-            $this.closest('.ProductItem').addClass('animated bounceOutLeft');
-            setTimeout(function(){
-                $this.closest('.ProductItem').remove();
-            }, 1000)
-            
+            swal({
+                title : '╮(╯_╰)╭ ',
+                text : '你确定要删除该表单吗?',
+                showCancelButton : true,
+                confirmButtonText : '删了它!!!',
+                confirmButtonColor : '#e86363',
+                cancelButtonText : '算了,饶了它'
+            },function(){
+                    $this.closest('.ProductItem').addClass('animated bounceOutLeft');
+                    setTimeout(function(){
+                         $this.closest('.ProductItem').remove();
+                         swal({
+                            title : '删除成功 ╮(￣▽￣)╭!',
+                            type : 'success',
+                            confirmButtonText : '确定',
+                            timer: 1500
+                        });
+                        
+                    }, 1000);
+            });            
          });
     }
 
