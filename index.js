@@ -11,6 +11,10 @@ var db = require('./mongodb/db');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
+var formidable = require('express-formidable');
+require('events').EventEmitter.prototype._maxListeners = 100;
+
+app.setMaxListeners(1000);
 app.use(express.static(__dirname + '/public'));
 
 app.engine('hbs', exphbs({
@@ -38,7 +42,12 @@ app.use(session({
        }),
 		resave: true,  //强制更新 session
 		saveUninitialized: false // 设置为 false，强制创建一个 session，即使用户未登录
-	}));
+    }));
+
+app.use(formidable({
+    uploadDir: path.join(__dirname, 'public/upload'),// 上传文件目录
+    keepExtensions: true// 保留后缀
+}));
 
 // flash 中间件，用来显示通知
 app.use(flash()); 
@@ -88,24 +97,20 @@ routes(app);
 //   ]
 // }));
 
-//定制404页面 
-app.use(function(req, res){
-
-     res.type('text/plain');
-     res.status(404);
-     res.send('404 - Not Found');
-
-});
+//  定制404页面 
+// app.use(function(req, res){
+//      res.type('text/plain').status(500).send('404 - Server Error');
+// });
 
 //定制505页面   
-app.use(function(err, req, res, next){
+// app.use(function(err, req, res, next){
 
-     console.log(err.stack);
-     res.type('text/plain');
-     res.status(500);
-     res.send('500 - Server Error');
+//      console.log(err.stack);
+//      res.type('text/plain');
+//      res.status(500);
+//      res.send('500 - Server Error');
 
-});
+// });
 
 app.listen(app.get('port'), function(){
    console.log('app starts on http://localhost:'+ app.get('port'));
