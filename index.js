@@ -45,7 +45,7 @@ app.use(session({
     }));
 
 app.use(formidable({
-    uploadDir: path.join(__dirname, 'public/upload'),// 上传文件目录
+    // uploadDir: path.join(__dirname, 'public/upload'),// 上传文件目录
     keepExtensions: true// 保留后缀
 }));
 
