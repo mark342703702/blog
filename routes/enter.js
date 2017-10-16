@@ -5,12 +5,15 @@ var productModel = require('../models/product');
 router.get('/', function(req, res) {
   var data = {
     page : 'enter'
-  }
+  };
   res.render('enter', data);
 });
 
 router.get('/upload', function(req, res){
-   res.render('enter/upload');
+    var data = {
+      page : 'enter'
+    };
+    res.render('enter/upload', data);
 });
 
 router.post('/upload', function(req, res){

@@ -1,6 +1,7 @@
 require('../css/enter.css');
 var backTop = require('./partials/backTop');
 var enterProductTpl = require('../hbs/enterProduct.hbs');
+var upload = require('./enter/upload');
 $(function(){
 
     var NumRegCheck = function(val){
@@ -161,5 +162,5 @@ $(function(){
 
     //绑定返回顶部事件
     backTop.toTheTop();
-
+    upload.checkUpload();
 });

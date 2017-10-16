@@ -1,0 +1,25 @@
+// #uploadFile{
+//    display: none;
+// }
+
+.toolbar{
+    .uploadIcon{
+        background-image: url('/image/upload.png');
+        background-size:20px 20px;
+        background-repeat:no-repeat;
+        background-position:center; 
+        background-color: #009E6F;
+        padding: 10px;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: 30px 30px;
+        box-shadow: 2px 2px 3px #888888;
+        &:hover{
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          animation-name: flash;
+        }
+    }
+}
