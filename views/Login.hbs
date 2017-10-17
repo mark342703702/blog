@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="/css/login.css" />
   <script src='http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js'></script>
   <script type='text/javascript' src='/plugin/jquery.particleground.min.js'></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script type='text/javascript' src='/js/login.js'></script>
-
-
+  
 </head> 
 
 <body>
@@ -23,15 +23,18 @@
 
   <div class="intro animated bounceInLeft">
 
-    <h1>Mark's blog</h1>
-    <form>
+    <h1>{{blog.title}}</h1>
+    <form method="post" enctype="multipart/form-data" action="/user/login">
+        {{#if error}}
+          <span class="warning">{{error}}</span>
+        {{/if}}
         <div class="form-group">
-            <label for="email">邮箱</label>
-            <input type="email" class="form-control" id="email" placeholder="邮箱">
+            <label for="QQ">邮箱</label>
+            <input type="text" class="form-control" id="QQ" placeholder="QQ" name="QQ">
         </div>
         <div class="form-group">
             <label for="password">密码</label>
-            <input type="password" class="form-control" id="password" placeholder="密码">
+            <input type="password" class="form-control" id="password" placeholder="密码" name="password">
         </div>
         <button type="submit" class="btn btn-default">登录</button>
     </form>

@@ -11,6 +11,14 @@ adminSchema.statics.addAdmin = function(admin){
     });    
 }
 
+//查找管理员数据
+adminSchema.statics.findAdmin = function(conditions){
+    return this.find(conditions, function(err,docs){
+        if(err) return console.log(err);
+        console.log(docs);
+    });
+}
+
 
 
 var Admin = mongoose.model('Admin', adminSchema);

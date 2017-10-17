@@ -14,7 +14,6 @@
     <script src="/js/main/{{page}}.main.js"></script>
   </head>
   <body>
-
     <div class="header">
       
            <div id="nav">
@@ -117,11 +116,23 @@
 
                 <li><a href="/user/login" class="three-d">
 
-                  退出
+                   {{user.user_name}}
 
-                  <span class="three-d-box"><span class="front">退出</span><span class="back">退出</span></span>
+                  <span class="three-d-box"><span class="front">{{user.user_name}}</span><span class="back">{{user.user_name}}</span></span></a>
 
-                </a></li>
+                  <ul class="clearfix unstyled drop-menu">
+
+                    <li><a href="/user/logout" class="three-d">
+
+                        退出
+
+                        <span class="three-d-box"><span class="front">退出</span><span class="back">退出</span></span>
+
+                    </a></li>
+
+                  </ul>
+
+                </li>
 
               </ul>
 
@@ -129,7 +140,24 @@
          </div>
     
     <div class="content">
-     {{{body}}}
+      <div class="row animated bounceInUp">
+        <div class="col-md-12">
+        {{#if success}}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>{{success}}</strong>
+          </div>
+        {{/if}}
+
+        {{#if error}}
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>{{error}}</strong>
+          </div>
+        {{/if}}
+        </div>
+      </div>
+    {{{body}}}
     </div>
     
   </body>

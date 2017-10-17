@@ -64,6 +64,15 @@
             position: absolute;
             width: 200px;
             right : 40px;
+            color: #fff;
+            background-color: #cf4646;
+            border-color: #e97a7a;
+            box-shadow : 2px 2px 3px #888888;
+            &:hover{
+              background-color:#e03a3a;
+              border-color:#cf4646;
+              
+            }
         }
 
 }

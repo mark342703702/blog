@@ -14,7 +14,6 @@ var billSchema = new Schema({
     //订单商品
     item : {type : [productSchema], required: true}
     
-
 }, { autoIndex: false});
 
 exports.billSchema = billSchema;

@@ -74,8 +74,8 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  padding: 10px 20px;
-  height: 320px;
+  padding: 20px 10px;
+  height: 340px;
   width: 40%;
   min-width: 760px;
   text-align: center;
@@ -84,6 +84,8 @@ body {
   filter: alpha(opacity=60);
   -moz-opacity: 0.5;
   -khtml-opacity: 0.5; }
+  .intro .warning {
+    color: #cf4646; }
 
 h1 {
   text-transform: uppercase;
@@ -91,7 +93,7 @@ h1 {
   font-weight: 700;
   letter-spacing: 0.015em;
   color: #cf4646;
-  margin: 20px 0; }
+  margin: 20px auto 15px; }
 
 p {
   margin: 0 0 30px 0;
@@ -115,8 +117,7 @@ p {
 
 .btn:hover {
   color: #ea7777;
-  border-color: #ea7777;
-  width: 100%; }
+  border-color: #ea7777; }
 
 .form-control:focus {
   /*这里改成了粉色*/

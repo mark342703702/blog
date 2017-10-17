@@ -12,6 +12,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var formidable = require('express-formidable');
+
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 app.setMaxListeners(1000);
@@ -54,16 +55,18 @@ app.use(flash());
 
 // 设置模板全局常量
 app.locals.blog = {
-    title: '小时代啦啦啦公司',
+    title: 'Mark\'s blog',
     description: '一站式儿童品牌集合店'
 };
 
+//设置提醒中间件
 app.use(function (req, res, next) {
-    res.locals.user = req.session.user;
+        res.locals.user = req.session.user;
 		res.locals.success = req.flash('success').toString();
 		res.locals.error = req.flash('error').toString();
 		next();
 });
+          
 
 // 正常请求的日志
 // app.use(expressWinston.logger({
@@ -77,6 +80,7 @@ app.use(function (req, res, next) {
 //     })
 //   ]
 // }));
+
 
 //路由
 routes(app);
@@ -96,21 +100,6 @@ routes(app);
 //     })
 //   ]
 // }));
-
-//  定制404页面 
-// app.use(function(req, res){
-//      res.type('text/plain').status(500).send('404 - Server Error');
-// });
-
-//定制505页面   
-// app.use(function(err, req, res, next){
-
-//      console.log(err.stack);
-//      res.type('text/plain');
-//      res.status(500);
-//      res.send('500 - Server Error');
-
-// });
 
 app.listen(app.get('port'), function(){
    console.log('app starts on http://localhost:'+ app.get('port'));

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var xl = require('node-xlrd');
 var productModel = require('../models/product');
+var checkNotLogin = require('../middlewares/check').checkNotLogin;
+var checkLogin = require('../middlewares/check').checkLogin;
 router.get('/', function(req, res) {
   var data = {
     page : 'enter'
